@@ -1,0 +1,1 @@
+from j2pipeline.template.assembly import assemble
