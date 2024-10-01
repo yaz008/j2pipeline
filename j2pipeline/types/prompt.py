@@ -6,6 +6,7 @@ from typing import Callable, NoReturn
 @dataclass(slots=True)
 class Prompt:
     path: str
+    process: Callable[[str], str] = field(default=lambda response: response)
     __callback: Callable[[str], NoReturn] = field(init=False)
     __response: str | None = field(default=None, init=False)
 
@@ -22,4 +23,4 @@ class Prompt:
             clt.send(prompt)
         while True:
             if self.__response is not None:
-                return self.__response
+                return self.process(self.__response)
