@@ -5,7 +5,7 @@ with open(file='README.md', mode='r', encoding='UTF-8') as readme_file:
 
 setuptools.setup(
     name='j2pipeline',
-    version='0.3.1',
+    version='0.3.2',
     description='Create LLM pipelines with ease!',
     long_description=readme,
     long_description_content_type='text/markdown',
