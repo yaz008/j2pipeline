@@ -1,0 +1,1 @@
+from j2pipeline.types.prompt import Prompt
