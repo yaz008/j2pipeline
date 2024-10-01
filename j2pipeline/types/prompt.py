@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from j2pipeline.template import assemble
 from j2pipeline.tcp import client
-from typing import Callable, NoReturn
+from typing import Callable
 
 @dataclass(slots=True)
 class Prompt[T]:
