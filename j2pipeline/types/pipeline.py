@@ -19,5 +19,5 @@ class Pipeline[T]:
             name: str = filename[:-len('.j2')]
             prompt: Prompt = Prompt(path=f'{self.base_path}\\{filename}',
                                     process=self.process.get(name, self.process['*']))
-            result: str = prompt.ask(subs={ 'PROMPT': result })
+            result: str = prompt(PROMPT=result)
         return self.final_process(result)

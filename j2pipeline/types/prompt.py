@@ -4,9 +4,9 @@ from j2pipeline.tcp import client
 from typing import Callable, NoReturn
 
 @dataclass(slots=True)
-class Prompt:
+class Prompt[T]:
     path: str
-    process: Callable[[str], str] = field(default=lambda response: response)
+    process: Callable[[str], T] = field(default=lambda response: response)
     __callback: Callable[[str], NoReturn] = field(init=False)
     __response: str | None = field(default=None, init=False)
 
@@ -16,7 +16,7 @@ class Prompt:
             exit(code=0)
         self.__callback = callback
 
-    def ask(self, subs: dict[str, str]) -> str:
+    def __call__(self, **subs: str) -> T:
         self.__response = None
         prompt: str = assemble(path=self.path, subs=subs)
         with client(on_receive=self.__callback) as clt:
