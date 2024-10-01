@@ -7,6 +7,7 @@ from typing import Callable, NoReturn
 class Prompt[T]:
     path: str
     process: Callable[[str], T] = field(default=lambda response: response)
+    auto_upper: bool = field(default=True)
     __callback: Callable[[str], NoReturn] = field(init=False)
     __response: str | None = field(default=None, init=False)
 
@@ -18,6 +19,8 @@ class Prompt[T]:
 
     def __call__(self, **subs: str) -> T:
         self.__response = None
+        if self.auto_upper:
+            subs = { key.upper(): value for key, value in subs.items() }
         prompt: str = assemble(path=self.path, subs=subs)
         with client(on_receive=self.__callback) as clt:
             clt.send(prompt)
