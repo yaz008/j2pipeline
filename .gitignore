@@ -1,7 +1,8 @@
 .venv
 .env
 .mypy_cache
+.pypirc
 __pycache__
-dist
 *.egg-info
+dist
 src
