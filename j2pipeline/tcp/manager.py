@@ -1,6 +1,6 @@
 from socket import socket as Socket, AddressFamily, SocketKind
 from contextlib import contextmanager
-from typing import Generator, Callable
+from typing import Generator
 from j2pipeline.tcp.client import Client
 
 @contextmanager

@@ -1,7 +1,5 @@
 from socket import socket as Socket
-from threading import Thread
 from dataclasses import dataclass
-from typing import Callable
 
 @dataclass(slots=True)
 class Client:
