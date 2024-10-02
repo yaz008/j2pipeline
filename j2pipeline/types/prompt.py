@@ -14,4 +14,5 @@ class Prompt[T]:
             subs = { key.upper(): value for key, value in subs.items() }
         prompt: str = assemble(path=self.path, subs=subs)
         with client() as clt:
-            return clt.send(prompt)
+            result: str = clt.send(prompt)
+        return self.process(result)
