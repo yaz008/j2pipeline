@@ -17,7 +17,7 @@ class Pipeline[T]:
                                      for name
                                      in listdir(path=self.base_path)])
         if '*' not in self.process.keys():
-            self.process.update({ '*': lambda response: response })
+            self.process |= { '*': lambda response: response }
     
     def __call__(self, prompt: str) -> T:
         result: str = prompt
