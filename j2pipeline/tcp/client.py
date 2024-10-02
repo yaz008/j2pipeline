@@ -13,9 +13,9 @@ class Client:
         self.socket.send(size)
         self.socket.send(data)
         while True:
-            size: int = int(self.socket.recv(16).decode(encoding='UTF-8').strip())
-            message: str = self.socket.recv(size).decode(encoding='UTF-8')
-            return message
+            recv_size: int = int(self.socket.recv(16).decode(encoding='UTF-8').strip())
+            recv_message: str = self.socket.recv(recv_size).decode(encoding='UTF-8')
+            return recv_message
 
     def close(self) -> None:
         self.socket.close()

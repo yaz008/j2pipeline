@@ -22,7 +22,7 @@ class Pipeline[T]:
     def __call__(self, prompt: str) -> T:
         result: str = prompt
         for name in self.__names:
-            prompt: Prompt = Prompt(path=f'{self.base_path}\\{name}.{self.extension}',
-                                    process=self.process.get(name, self.process['*']))
-            result: str = prompt(PROMPT=result)
+            func: Prompt[str] = Prompt[str](path=f'{self.base_path}\\{name}.{self.extension}',
+                                            process=self.process.get(name, self.process['*']))
+            result = func(prompt=result)
         return self.final_process(result)
