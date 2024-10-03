@@ -31,6 +31,12 @@ server.send(size)
 server.send(data)
 ```
 
+### Server
+
+-   For personal use, you might consider installing a Telegram GPT server available at `https://github.com/yaz008/TG-GPT-API`
+
+-   You can write your own server following the described protocol
+
 ## Usage
 
 ### Prompt
